@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Study Schedule To-Do List</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+      min-height: 100vh;
+    }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+
+  <!-- React and Dependencies -->
+  <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+  <!-- Schedule Data -->
+  <script type="text/babel">
+    const schedule = [
+      {
+        date: "May 1, 2025",
+        tasks: [
+          { id: 1, subject: "Chemistry First Paper", chapter: "Chapter 2", time: "06:00 - 08:00", completed: false },
+          { id: 2, subject: "Physics First Paper", chapter: "Chapter 5", time: "08:00 - 10:00", completed: false },
+          { id: 3, subject: "Biology First Paper", chapter: "Chapter 1", time: "10:00 - 12:00", completed: false },
+          { id: 4, subject: "Higher Math First Paper", chapter: "Chapter 3", time: "12:00 - 14:00", completed: false },
+          { id: 5, subject: "Chemistry Second Paper", chapter: "Chapter 1", time: "14:00 - 16:00", completed: false },
+          { id: 6, subject: "Physics Second Paper", chapter: "Chapter 1", time: "16:00 - 18:00", completed: false },
+          { id: 7, subject: "Bangla Practice", chapter: "Read a short article", time: "18:00 - 18:15", completed: false },
+          { id: 8, subject: "ICT Practice", chapter: "Review Python basics", time: "18:15 - 18:30", completed: false }
+        ]
+      },
+      {
+        date: "May 2, 2025",
+        tasks: [
+          { id: 9, subject: "Chemistry First Paper", chapter: "Chapter 3", time: "06:00 - 08:00", completed: false },
+          { id: 10, subject: "Physics First Paper", chapter: "Chapter 7", time: "08:00 - 10:00", completed: false },
+          { id: 11, subject: "Biology Second Paper", chapter: "Chapter 1", time: "10:00 - 12:00", completed: false },
+          { id: 12, subject: "Higher Math First Paper", chapter: "Chapter 4", time: "12:00 - 14:00", completed: false },
+          { id: 13, subject: "Physics Second Paper", chapter: "Chapter 2", time: "14:00 - 16:00", completed: false },
+          { id: 14, subject: "Chemistry First Paper", chapter: "Chapter 4", time: "16:00 - 18:00", completed: false }
+        ]
+      },
+      {
+        date: "May 3, 2025",
+        tasks: [
+          { id: 15, subject: "Chemistry Second Paper", chapter: "Chapter 2", time: "06:00 - 08:00", completed: false },
+          { id: 16, subject: "Physics First Paper", chapter: "Chapter 8", time: "08:00 - 10:00", completed: false },
+          { id: 17, subject: "Biology First Paper", chapter: "Chapter 4", time: "10:00 - 12:00", completed: false },
+          { id: 18, subject: "Higher Math First Paper", chapter: "Chapter 7", time: "12:00 - 14:00", completed: false },
+          { id: 19, subject: "Physics Second Paper", chapter: "Chapter 3", time: "14:00 - 16:00", completed: false },
+          { id: 20, subject: "Chemistry Second Paper", chapter: "Chapter 3", time: "16:00 - 18:00", completed: false }
+        ]
+      },
+      {
+        date: "May 4, 2025",
+        tasks: [
+          { id: 21, subject: "Physics First Paper", chapter: "Chapter 10", time: "06:00 - 08:00", completed: false },
+          { id: 22, subject: "Biology Second Paper", chapter: "Chapter 2", time: "08:00 - 10:00", completed: false },
+          { id: 23, subject: "Higher Math Second Paper", chapter: "Chapter 3", time: "10:00 - 12:00", completed: false },
+          { id: 24, subject: "Chemistry Second Paper", chapter: "Chapter 4", time: "12:00 - 14:00", completed: false },
+          { id: 25, subject: "Physics Second Paper", chapter: "Chapter 7", time: "14:00 - 16:00", completed: false },
+          { id: 26, subject: "English Practice", chapter: "Vocabulary exercises", time: "16:00 - 16:20", completed: false },
+          { id: 27, subject: "ICT Practice", chapter: "Database concepts", time: "16:20 - 16:30", completed: false }
+        ]
+      },
+      {
+        date: "May 5, 2025",
+        tasks: [
+          { id: 28, subject: "Biology First Paper", chapter: "Chapter 9", time: "06:00 - 08:00", completed: false },
+          { id: 29, subject: "Physics Second Paper", chapter: "Chapter 8", time: "08:00 - 10:00", completed: false },
+          { id: 30, subject: "Higher Math Second Paper", chapter: "Chapter 4", time: "10:00 - 12:00", completed: false },
+          { id: 31, subject: "Biology Second Paper", chapter: "Chapter 3", time: "12:00 - 14:00", completed: false }
+        ]
+      },
+      {
+        date: "May 6, 2025",
+        tasks: [
+          { id: 32, subject: "Biology First Paper", chapter: "Chapter 11", time: "06:00 - 08:00", completed: false },
+          { id: 33, subject: "Higher Math Second Paper", chapter: "Chapter 6", time: "08:00 - 10:00", completed: false },
+          { id: 34, subject: "Physics Second Paper", chapter: "Chapter 9", time: "10:00 - 12:00", completed: false },
+          { id: 35, subject: "Bangla Practice", chapter: "Write a short paragraph", time: "16:00 - 16:20", completed: false },
+          { id: 36, subject: "English Practice", chapter: "Reading comprehension", time: "16:20 - 16:40", completed: false },
+          { id: 37, subject: "ICT Practice", chapter: "Basic algorithms", time: "16:40 - 17:00", completed: false }
+        ]
+      },
+      {
+        date: "May 7, 2025",
+        tasks: [
+          { id: 38, subject: "Biology Second Paper", chapter: "Chapter 7", time: "06:00 - 08:00", completed: false },
+          { id: 39, subject: "Higher Math Second Paper", chapter: "Chapter 7", time: "08:00 - 10:00", completed: false },
+          { id: 40, subject: "Physics Second Paper", chapter: "Chapter 10", time: "10:00 - 12:00", completed: false },
+          { id: 41, subject: "Review / Practice", chapter: "Notes & problems", time: "12:00 - 14:00", completed: false }
+        ]
+      },
+      {
+        date: "May 8, 2025",
+        tasks: [
+          { id: 42, subject: "Biology Second Paper", chapter: "Chapter 10", time: "06:00 - 08:00", completed: false },
+          { id: 43, subject: "Higher Math Second Paper", chapter: "Chapter 8", time: "08:00 - 10:00", completed: false },
+          { id: 44, subject: "Higher Math Second Paper", chapter: "Chapter 9", time: "10:00 - 12:00", completed: false },
+          { id: 45, subject: "Bangla Practice", chapter: "Grammar review", time: "16:00 - 16:20", completed: false },
+          { id: 46, subject: "English Practice", chapter: "Grammar drills", time: "16:20 - 16:40", completed: false },
+          { id: 47, subject: "ICT Practice", chapter: "Coding exercise", time: "16:40 - 17:00", completed: false }
+        ]
+      }
+    ];
+  </script>
+
+  <!-- React Components -->
+  <script type="text/babel">
+    function ProgressBar({ completed, total }) {
+      const percentage = (completed / total) * 100;
+      return (
+        <div className="w-full bg-gray-200 rounded-full h-4 mb-4">
+          <div
+            className="bg-blue-600 h-4 rounded-full transition-all duration-500"
+            style={{ width: `${percentage}%` }}
+          ></div>
+          <p className="text-sm text-gray-600 mt-1">
+            {completed} of {total} chapters completed ({Math.round(percentage)}%)
+          </p>
+        </div>
+      );
+    }
+
+    function Filter({ setFilter, filter }) {
+      return (
+        <div className="mb-4">
+          <select
+            className="p-2 border rounded-lg w-full sm:w-64 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            value={filter}
+            onChange={(e) => setFilter(e.target.value)}
+          >
+            <option value="all">All Days</option>
+            {schedule.map((day) => (
+              <option key={day.date} value={day.date}>{day.date}</option>
+            ))}
+            <option value="completed">Completed Tasks</option>
+            <option value="incomplete">Incomplete Tasks</option>
+          </select>
+        </div>
+      );
+    }
+
+    function Task({ task, toggleTask, editTask, deleteTask }) {
+      const [isEditing, setIsEditing] = React.useState(false);
+      const [newChapter, setNewChapter] = React.useState(task.chapter);
+      const [newTime, setNewTime] = React.useState(task.time);
+
+      const handleEdit = () => {
+        if (isEditing) {
+          editTask(task.id, newChapter, newTime);
+        }
+        setIsEditing(!isEditing);
+      };
+
+      return (
+        <div className="flex items-center justify-between p-4 bg-white rounded-lg shadow-md mb-2 hover:shadow-lg transition-shadow">
+          <div className="flex items-center">
+            <input
+              type="checkbox"
+              checked={task.completed}
+              onChange={() => toggleTask(task.id)}
+              className="h-5 w-5 text-blue-600 rounded focus:ring-blue-500"
+            />
+            <div className="ml-4">
+              {isEditing ? (
+                <div>
+                  <input
+                    type="text"
+                    value={newChapter}
+                    onChange={(e) => setNewChapter(e.target.value)}
+                    className="p-1 border rounded w-full mb-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  />
+                  <input
+                    type="text"
+                    value={newTime}
+                    onChange={(e) => setNewTime(e.target.value)}
+                    className="p-1 border rounded w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  />
+                </div>
+              ) : (
+                <div>
+                  <p className="font-medium text-gray-800">{task.subject}: {task.chapter}</p>
+                  <p className="text-sm text-gray-500">{task.time}</p>
+                </div>
+              )}
+            </div>
+          </div>
+          <div className="flex space-x-2">
+            <button
+              onClick={handleEdit}
+              className="px-3 py-1 bg-yellow-500 text-white rounded hover:bg-yellow-600 transition-colors"
+            >
+              {isEditing ? "Save" : "Edit"}
+            </button>
+            <button
+              onClick={() => deleteTask(task.id)}
+              className="px-3 py-1 bg-red-500 text-white rounded hover:bg-red-600 transition-colors"
+            >
+              Delete
+            </button>
+          </div>
+        </div>
+      );
+    }
+
+    function TaskList({ tasks, toggleTask, editTask, deleteTask }) {
+      return (
+        <div>
+          {tasks.map((task) => (
+            <Task
+              key={task.id}
+              task={task}
+              toggleTask={toggleTask}
+              editTask={editTask}
+              deleteTask={deleteTask}
+            />
+          ))}
+        </div>
+      );
+    }
+
+    function App() {
+      const [tasks, setTasks] = React.useState(() => {
+        const saved = localStorage.getItem("tasks");
+        return saved ? JSON.parse(saved) : schedule;
+      });
+      const [filter, setFilter] = React.useState("all");
+      const [newTask, setNewTask] = React.useState({ subject: "", chapter: "", time: "", date: "May 1, 2025" });
+      const [completedDays, setCompletedDays] = React.useState(new Set());
+
+      React.useEffect(() => {
+        localStorage.setItem("tasks", JSON.stringify(tasks));
+      }, [tasks]);
+
+      const fireConfetti = () => {
+        confetti({
+          particleCount: 100,
+          spread: 70,
+          origin: { y: 0.6 },
+          colors: ['#bb0000', '#ffffff', '#00bb00'],
+        });
+      };
+
+      const checkDayCompletion = (updatedTasks) => {
+        updatedTasks.forEach((day) => {
+          if (!completedDays.has(day.date) && day.tasks.every((task) => task.completed)) {
+            fireConfetti();
+            setCompletedDays(new Set([...completedDays, day.date]));
+          }
+        });
+      };
+
+      const toggleTask = (id) => {
+        const updatedTasks = tasks.map((day) => ({
+          ...day,
+          tasks: day.tasks.map((task) =>
+            task.id === id ? { ...task, completed: !task.completed } : task
+          ),
+        }));
+        setTasks(updatedTasks);
+        checkDayCompletion(updatedTasks);
+      };
+
+      const editTask = (id, newChapter, newTime) => {
+        const updatedTasks = tasks.map((day) => ({
+          ...day,
+          tasks: day.tasks.map((task) =>
+            task.id === id ? { ...task, chapter: newChapter, time: newTime } : task
+          ),
+        }));
+        setTasks(updatedTasks);
+        checkDayCompletion(updatedTasks);
+      };
+
+      const deleteTask = (id) => {
+        const updatedTasks = tasks.map((day) => ({
+          ...day,
+          tasks: day.tasks.filter((task) => task.id !== id),
+        }));
+        setTasks(updatedTasks);
+        checkDayCompletion(updatedTasks);
+      };
+
+      const addTask = () => {
+        if (!newTask.subject || !newTask.chapter || !newTask.time) return;
+        const newId = Math.max(...tasks.flatMap((day) => day.tasks.map((t) => t.id)), 0) + 1;
+        const updatedTasks = tasks.map((day) =>
+          day.date === newTask.date
+            ? {
+                ...day,
+                tasks: [...day.tasks, { id: newId, ...newTask, completed: false }],
+              }
+            : day
+        );
+        setTasks(updatedTasks);
+        checkDayCompletion(updatedTasks);
+        setNewTask({ subject: "", chapter: "", time: "", date: "May 1, 2025" });
+      };
+
+      const filteredTasks = (() => {
+        if (filter === "completed") {
+          return tasks.flatMap((day) => day.tasks.filter((task) => task.completed));
+        }
+        if (filter === "incomplete") {
+          return tasks.flatMap((day) => day.tasks.filter((task) => !task.completed));
+        }
+        const day = tasks.find((day) => day.date === filter);
+        return day ? day.tasks : tasks.flatMap((day) => day.tasks);
+      })();
+
+      const completedChapters = tasks
+        .flatMap((day) => day.tasks)
+        .filter((task) => task.completed && task.subject.includes("Paper") && task.chapter.includes("Chapter"))
+        .length;
+      const totalChapters = 36;
+
+      return (
+        <div className="max-w-4xl mx-auto p-6">
+          <h1 className="text-3xl font-bold text-gray-800 mb-6 text-center">
+            Study Schedule To-Do List (May 1–8, 2025)
+          </h1>
+
+          <ProgressBar completed={completedChapters} total={totalChapters} />
+
+          <div className="mb-6">
+            <h2 className="text-xl font-semibold text-gray-700 mb-2">Add New Task</h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <input
+                type="text"
+                placeholder="Subject"
+                value={newTask.subject}
+                onChange={(e) => setNewTask({ ...newTask, subject: e.target.value })}
+                className="p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              />
+              <input
+                type="text"
+                placeholder="Chapter/Activity"
+                value={newTask.chapter}
+                onChange={(e) => setNewTask({ ...newTask, chapter: e.target.value })}
+                className="p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              />
+              <input
+                type="text"
+                placeholder="Time"
+                value={newTask.time}
+                onChange={(e) => setNewTask({ ...newTask, time: e.target.value })}
+                className="p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              />
+              <select
+                value={newTask.date}
+                onChange={(e) => setNewTask({ ...newTask, date: e.target.value })}
+                className="p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              >
+                {schedule.map((day) => (
+                  <option key={day.date} value={day.date}>{day.date}</option>
+                ))}
+              </select>
+              <button
+                onClick={addTask}
+                className="col-span-1 sm:col-span-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+              >
+                Add Task
+              </button>
+            </div>
+          </div>
+
+          <Filter setFilter={setFilter} filter={filter} />
+          <TaskList tasks={filteredTasks} toggleTask={toggleTask} editTask={editTask} deleteTask={deleteTask} />
+        </div>
+      );
+    }
+
+    ReactDOM.render(<App />, document.getElementById("root"));
+  </script>
+</body>
+</html>
