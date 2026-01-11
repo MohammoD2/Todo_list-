@@ -29,16 +29,16 @@
   <script type="text/babel">
     const roadmap = [
       {
-        phase: "Phase 1 (Days 1–30): Deep Learning Foundations",
+        phase: "Phase 1 (Days 1–30): Deep Learning Foundations + Discipline",
         weeks: [
           {
             title: "Week 1: Neural Foundations",
             tasks: [
               "Perceptron, neurons, weights, bias",
-              "Linear algebra essentials",
-              "Activation functions",
-              "Loss functions",
-              "Implement MLP from scratch (NumPy)"
+              "Linear algebra essentials (dot product, matrix shapes)",
+              "Activation functions: Sigmoid, Tanh, ReLU, Leaky ReLU",
+              "Loss functions: MSE, MAE, BCE, CCE",
+              "Practical task: Implement a small MLP from scratch (NumPy)"
             ]
           },
           {
@@ -46,111 +46,133 @@
             tasks: [
               "Chain rule & computational graphs",
               "Backpropagation intuition + math",
-              "Optimizers: SGD, Adam",
+              "Optimizers: GD, SGD, Momentum, Adam",
+              "Learning rates, schedulers",
               "Initialization: Xavier, He",
-              "Train MLP on MNIST (PyTorch)"
+              "Debugging: exploding/vanishing gradients, dead ReLUs",
+              "Practical task: Train an MLP on MNIST (PyTorch)"
             ]
           },
           {
             title: "Week 3: Training Discipline & Data-Centric DL",
             tasks: [
-              "Training loops & batching",
-              "Evaluation metrics (F1, ROC-AUC)",
-              "Data leakage & imbalance",
-              "Regularization techniques",
-              "Improve MNIST robustness"
+              "Training loops, batching, epochs",
+              "Metrics beyond accuracy (F1, ROC-AUC)",
+              "Data leakage & dataset splits",
+              "Class imbalance strategies",
+              "Data augmentation (CV + NLP basics)",
+              "Regularization: Dropout, L1/L2, Early stopping",
+              "Practical task: Improve MNIST model robustness"
             ]
           },
           {
-            title: "Week 4: CNNs & Computer Vision",
+            title: "Week 4: CNNs & Computer Vision Core",
             tasks: [
-              "Convolutions & pooling",
-              "VGG & ResNet",
+              "Convolutions, kernels, padding, stride",
+              "Pooling layers",
+              "CNN architectures: VGG, ResNet (deep dive)",
               "Batch Normalization",
-              "Transfer learning",
-              "ResNet image classifier project"
+              "Transfer learning basics",
+              "Practical project:",
+              "Image classifier using ResNet (custom dataset)"
             ]
           }
         ]
       },
       {
-        phase: "Phase 2 (Days 31–60): Transformers & GenAI",
+        phase: "Phase 2 (Days 31–60): Sequences, Transformers & GenAI Core",
         weeks: [
           {
             title: "Week 5: Sequence Modeling",
             tasks: [
-              "RNNs & BPTT",
+              "RNNs, BPTT",
+              "Vanishing/exploding gradients (practical)",
               "LSTM & GRU internals",
-              "Word embeddings",
-              "Sentiment analysis with LSTM"
+              "Bidirectional RNNs",
+              "Word embeddings (Word2Vec, GloVe)",
+              "Practical task: Sentiment analysis with LSTM"
             ]
           },
           {
             title: "Week 6: Attention & Transformers",
             tasks: [
-              "Self-attention (QKV)",
+              "Why attention beats RNNs",
+              "Self-attention (Q, K, V)",
               "Multi-head attention",
               "Positional encoding",
-              "Mini-Transformer implementation"
+              "Transformer encoder vs decoder",
+              "Practical task: Implement a mini-Transformer"
             ]
           },
           {
             title: "Week 7: Modern NLP & LLM Stack",
             tasks: [
-              "Tokenization methods",
+              "Tokenization: BPE, WordPiece, SentencePiece",
               "Hugging Face ecosystem",
               "Fine-tuning transformers",
-              "Transformer NLP project"
+              "Evaluation: BLEU, Perplexity",
+              "Prompt engineering vs fine-tuning",
+              "Practical project:",
+              "Transformer-based text classification or NMT"
             ]
           },
           {
             title: "Week 8: Generative Models",
             tasks: [
               "Autoencoders & VAEs",
-              "GANs & DCGAN",
-              "Diffusion models",
-              "Image generation project"
+              "GANs: Generator–Discriminator game",
+              "DCGAN",
+              "Diffusion models (forward/reverse process)",
+              "Stable Diffusion architecture (concept)",
+              "Practical project:",
+              "Image generation using GAN or diffusion"
             ]
           }
         ]
       },
       {
-        phase: "Phase 3 (Days 61–90): Production & Elite Skills",
+        phase: "Phase 3 (Days 61–90): Production, Scaling & Elite Skills",
         weeks: [
           {
             title: "Week 9: Advanced CV & Multimodal",
             tasks: [
+              "Object detection vs classification",
               "YOLO concepts",
-              "Semantic segmentation",
-              "Vision Transformers",
-              "Object detection demo"
+              "Semantic segmentation (U-Net)",
+              "Vision Transformers (ViT)",
+              "CLIP concept (vision + text)",
+              "Practical task: Object detection demo"
             ]
           },
           {
-            title: "Week 10: Scaling & MLOps",
+            title: "Week 10: Performance, Scaling & MLOps",
             tasks: [
-              "Mixed precision training",
-              "Distributed training concepts",
-              "Model compression",
-              "Experiment tracking (MLflow/W&B)"
+              "Mixed precision training (FP16/BF16)",
+              "Gradient accumulation",
+              "Distributed training (DDP – concept)",
+              "Model compression & quantization",
+              "ONNX & model export",
+              "Experiment tracking (MLflow/W&B)",
+              "Data versioning (DVC)"
             ]
           },
           {
             title: "Week 11: Deployment & Safety",
             tasks: [
-              "FastAPI model serving",
-              "Latency vs throughput",
-              "Bias & hallucinations",
-              "GenAI security risks"
+              "Model serving (FastAPI)",
+              "GPU vs CPU inference",
+              "Latency vs throughput tradeoffs",
+              "Bias, fairness & ethics",
+              "Hallucinations in LLMs",
+              "Security risks in GenAI"
             ]
           },
           {
             title: "Week 12: Elite Capstone",
             tasks: [
-              "Choose capstone project",
-              "Clean repo & experiments",
-              "Evaluation & API",
-              "Deployment-ready system"
+              "Choose ONE: 1. Transformer-based Neural Machine Translation system 2. Custom image generator",
+              "(Diffusion or GAN) 3. End-to-end GenAI app (RAG or multimodal)",
+              "Capstone must include: - Clean repo structure - Tracked experiments - Proper evaluation - Inference API - Deployment-ready artifacts"
             ]
           }
         ]
@@ -161,27 +183,20 @@
   <!-- React App -->
   <script type="text/babel">
     function App() {
-      const [completed, setCompleted] = React.useState(() => {
-        return JSON.parse(localStorage.getItem("completed")) || {};
-      });
+      const [completed, setCompleted] = React.useState(
+        JSON.parse(localStorage.getItem("completed")) || {}
+      );
 
       React.useEffect(() => {
         localStorage.setItem("completed", JSON.stringify(completed));
       }, [completed]);
 
       const toggle = (key) => {
-        const updated = { ...completed, [key]: !completed[key] };
-        setCompleted(updated);
-
-        if (!completed[key]) {
-          confetti({ particleCount: 80, spread: 60 });
-        }
+        setCompleted({ ...completed, [key]: !completed[key] });
+        if (!completed[key]) confetti({ particleCount: 80, spread: 60 });
       };
 
-      const allTasks = roadmap.flatMap(p =>
-        p.weeks.flatMap(w => w.tasks)
-      );
-
+      const allTasks = roadmap.flatMap(p => p.weeks.flatMap(w => w.tasks));
       const doneCount = Object.values(completed).filter(Boolean).length;
       const progress = Math.round((doneCount / allTasks.length) * 100);
 
@@ -192,15 +207,13 @@
           </h1>
 
           <p className="text-center text-gray-400 mb-6">
-            Become a production-ready Deep Learning & Generative AI Engineer
+            Goal: Become a production-ready Deep Learning & Generative AI Engineer capable of building, fine-tuning, evaluating, and deploying modern DL/GenAI systems.
           </p>
 
           <div className="bg-gray-800 rounded-full h-4 mb-2">
-            <div
-              className="bg-cyan-400 h-4 rounded-full transition-all"
-              style={{ width: `${progress}%` }}
-            ></div>
+            <div className="bg-cyan-400 h-4 rounded-full" style={{ width: `${progress}%` }}></div>
           </div>
+
           <p className="text-sm text-gray-400 mb-8">
             Progress: {doneCount} / {allTasks.length} ({progress}%)
           </p>
@@ -213,9 +226,7 @@
 
               {phase.weeks.map((week, wi) => (
                 <div key={wi} className="mb-4 bg-gray-900 p-4 rounded-xl">
-                  <h3 className="text-lg font-medium mb-2">
-                    {week.title}
-                  </h3>
+                  <h3 className="text-lg font-medium mb-2">{week.title}</h3>
 
                   {week.tasks.map((task, ti) => {
                     const key = `${pi}-${wi}-${ti}`;
@@ -237,6 +248,13 @@
               ))}
             </div>
           ))}
+
+          <div className="mt-10 bg-gray-900 p-6 rounded-xl">
+            <h2 className="text-2xl font-semibold text-cyan-300 mb-3">Final Outcome</h2>
+            <p className="text-gray-300">
+              After 90 days, you will: - Think like a Deep Learning Engineer - Debug & optimize real models - Build GenAI systems confidently - Be ready for senior ML/DL roles or client delivery
+            </p>
+          </div>
         </div>
       );
     }
